@@ -37,11 +37,11 @@ if ($result) {
     $totalTablesRow = mysqli_fetch_assoc($totalTablesResult);
     $totalTables = $totalTablesRow['totalTables'];
 
-    if ($availableTables >= $totalTables) {
+    if ($availableTables == $totalTables) {
         echo "Sorry, all tables are reserved at the specified time.";
     } else {
         // Reserve the first available table
-        $reserveQuery = "SELECT TableID FROM `Table` WHERE isReserved = 0 LIMIT 1";
+        $reserveQuery = "SELECT TableID FROM `Table` LIMIT 1";
         $reserveResult = mysqli_query($conn, $reserveQuery);
         $reserveRow = mysqli_fetch_assoc($reserveResult);
         $tableID = $reserveRow['TableID'];
