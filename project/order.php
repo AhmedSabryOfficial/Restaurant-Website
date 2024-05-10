@@ -1,3 +1,17 @@
+<?php
+require_once 'database.php';
+session_start();
+
+
+  $sql = "SELECT * FROM menu";
+  $all_product = $conn->query($sql);
+
+  // Fetch all rows into an array for later use
+  $results = mysqli_fetch_all($all_product, MYSQLI_ASSOC);;
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +25,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="javascripto.js"></script>
 </head>
 <body>
 
@@ -45,36 +61,21 @@ AVAILABLE WHILE SUPPLIES LAST
     </section>
 
     <section id="menu" class="container">
-        <div class="container-box" data-item-id="1">
-            <img src="pasta.jpg" alt="Spaghetti Bolognese">
-            <h3>Spaghetti Bolognese</h3>
-            <p>Classic Italian pasta with meat sauce</p>
-            <p>12.99$</p>
-            <button class="order-btn btn">Order Now <i class="fas fa-shopping-cart"></i></button>
-        </div>
-        <div class="container-box" data-item-id="2">
-            <img src="salad.jpeg" alt="Chicken Caesar Salad">
-            <h3>Chicken Caesar Salad</h3>
-            <p>Fresh romaine lettuce with grilled chicken and Caesar dressing</p>
-            <p>9.99$</p>
-            <button class="order-btn btn">Order Now <i class="fas fa-shopping-cart"></i></button>
-        </div>
-        
-        <div class="container-box" data-item-id="4">
-            <img src="salmon.jpeg" alt="Grilled Salmon ">
-            <h3>Grilled Salmon</h3>
-            <p>Freshly grilled salmon fillet served with steamed vegetables </p>
-            <p>17.99$</p>
-            <button class="order-btn btn">Order Now <i class="fas fa-shopping-cart"></i></button>
-        </div>
-        <div class="container-box" data-item-id="3">
-            <img src="pizza.jpg" alt=" Margherita Pizza " height="500px" >
-            <h3>Margherita Pizza</h3>
-            <p>Traditional Italian pizza with tomato sauce, mozzarella, and basil </p>
-            <p>14.99$</p>
-            <button class="order-btn btn">Order Now <i class="fas fa-shopping-cart"></i></button>
-        </div>
+    <?php
 
+foreach ($results as $row) {
+  ?>
+        <div class="container-box" data-item-id="1">
+            <img src="<?php echo $row["IMG_path"];?>" alt="Spaghetti Bolognese">
+            <h3><?php echo $row["item_Name"];?></h3>
+            <p><?php echo $row["Description"];?></p>
+            <p><?php echo $row["Price"];?>$</p>
+            <button class="order-btn btn">Order Now <i class="fas fa-shopping-cart"></i></button>
+        </div>
+        <?php
+}
+
+?>
     </section>
     <section id="reservation" class="reservation">
         <div class="reservation-text">
@@ -94,8 +95,53 @@ AVAILABLE WHILE SUPPLIES LAST
             <p>We are a renowned restaurant serving delicious meals with the finest ingredients. Visit us today!</p>
         </div>
     </section>
+    <section class="contact" id="contact">
+      <div class="contact-content">
+        <div class="contact-img">
+          <div class="c-one">
+            <!--destination for img name is f1.png-->
+            <img src="img/f1.png" alt="" />
+          </div>
+          <div class="c-one">
+            <!--destination for img name is f1.png-->
+            <img src="img/f2.png" alt="" />
+          </div>
+        </div>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="javascripto.js"></script>
+        <div class="contact-text">
+          <h2>Contact Us</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus,
+            tenetur illo tempora praesentium nihil optio, impedit similique
+            rerum distinctio minus ex repellendus iusto ab aspernatur deleniti
+            at eaque nostrum ut.
+          </p>
+          <div class="social">
+            <a href="#" class="clr"><img src="img/instagram-alt-logo-24.png" alt=""></i></a>
+            <a href="#"><img src="img/facebook-logo-24.png" alt=""></a>
+            <a href="#"><img src="img/google-logo-24.png" alt=""></a>
+            <a href="#"><img src="img/twitter-logo-24.png" alt=""></a>
+          </div>
+        </div>
+
+        <div class="details">
+          <div class="main-d">
+            <a href="#"><img src="img/location-plus-solid-24.png" alt="">Main street 65, ny, ny</a>
+          </div>
+          <div class="main-d">
+            <a href="#"><img src="img/mobile-solid-24.png" alt="">01030901313</a>
+          </div>
+          <div class="main-d">
+            <a href="#"><img src="img/bell-solid-24.png" alt="">Subscribe</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
 </body>
 </html>

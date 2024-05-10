@@ -172,7 +172,7 @@ if (isset($_POST["submit"])) {
 
    // If no errors, insert user data into the database
    if (count($errors) === 0) {
-      $sql = "INSERT INTO customer (fullname, email, password) VALUES (?, ?, ?)";
+      $sql = "INSERT INTO customer (cx_Name, email, password) VALUES (?, ?, ?)";
       $stmt = $conn->prepare($sql);
       $stmt->bind_param("sss", $fullName, $email, $passwordHash);
       

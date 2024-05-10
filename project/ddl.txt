@@ -6,7 +6,7 @@ CREATE TABLE Customer (
 );
 
 CREATE TABLE Menu (
-    item_ID INT AUTO INCEREMENT PRIMARY KEY,
+    item_ID INT AUTO_INCREMENT PRIMARY KEY,
     item_Name VARCHAR(255) NOT NULL,
     Description TEXT,
     Price DECIMAL(10,2) NOT NULL,
@@ -36,25 +36,3 @@ CREATE TABLE Reservation (
     FOREIGN KEY (Cx_ID) REFERENCES Customer(cxID),
     FOREIGN KEY (Table_ID) REFERENCES Table_(Table_ID)
 );
-INSERT INTO Menu (itemID, item_Name, Description, Price, Category)
-VALUES
-    (1, 'Spaghetti Bolognese', 'Classic Italian pasta with meat sauce', 12.99, 'Pasta'),
-    (2, 'Chicken Caesar Salad', 'Fresh romaine lettuce with grilled chicken and Caesar dressing', 9.99, 'Salad'),
-    (3, 'Margherita Pizza', 'Traditional Italian pizza with tomato sauce, mozzarella, and basil', 14.99, 'Pizza'),
-    (4, 'Grilled Salmon', 'Freshly grilled salmon fillet served with steamed vegetables', 17.99, 'Seafood');
-INSERT INTO Table (TableID, isReserved, chairs_count)
-VALUES
-    (1, 0, 4),  -- Table 1, not reserved, 4 chairs
-    (2, 1, 6),  -- Table 2, reserved, 6 chairs
-    (3, 0, 2),  -- Table 3, not reserved, 2 chairs
-    (4, 0, 8);  -- Table 4, not reserved, 8 chairs
-INSERT INTO Order (order_ID, cx_ID, item_ID)
-VALUES
-    (1, 1, 1),  -- Order ID 1, Customer ID 1 (assuming this is a valid customer ID), Menu item ID 1
-    (2, 2, 3),  -- Order ID 2, Customer ID 2, Menu item ID 3
-    (3, 3, 2);  -- Order ID 3, Customer ID 3, Menu item ID 2
-INSERT INTO Reservation (Cx_ID, Table_ID, Reservation_Date)
-VALUES
-    (1, 1, '2024-05-15 18:00:00'),  -- Customer ID 1 reserves Table 1 on May 15, 2024 at 6:00 PM
-    (2, 2, '2024-05-17 19:30:00'),  -- Customer ID 2 reserves Table 2 on May 17, 2024 at 7:30 PM
-    (3, 3, '2024-05-20 12:00:00');  -- Customer ID 3 reserves Table 3 on May 20, 2024 at 12:00 PM

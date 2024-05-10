@@ -7,7 +7,23 @@
 </head>
 <body>
     <p>Add a Dish</p>
-    <input type="email" placeholder="Enter Email:" name="email" class="form-control">
-                <input type="password" placeholder="Enter Password:" name="password" class="form-control">
-                <input type="submit" value="Add" name="login" class="btn btn-primary"></body>
+    <form action="addDish.php"  method="POST" enctype="multipart/form-data">
+    <input type="text" placeholder="Item Name" name="item_Name" class="form-control">
+    <input type="text" placeholder="Description" name="Description" class="form-control">
+    <input type="number" placeholder="Price" name="Price" class="form-control">
+
+
+<select name="Category" id="Category" placeholder="Category">
+<option value="undefined" selected>Select Category</option>
+  <option value="DINNER">DINNER</option>
+  <option value="LUNCH">LUNCH</option>
+  <option value="BREAKFAST">BREAKFAST</option>
+  <option value="DRINKS">DRINKS</option>
+  <option value="DESSERT">DESSERT</option>
+</select>
+
+    <input type="file" name="img">
+    <input type="submit" value="Add" name="add" class="btn btn-primary"></body>
+    </form>
+
 </html>
