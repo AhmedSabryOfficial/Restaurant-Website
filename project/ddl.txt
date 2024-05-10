@@ -10,14 +10,14 @@ CREATE TABLE Menu (
     item_Name VARCHAR(255) NOT NULL,
     Description TEXT,
     Price DECIMAL(10,2) NOT NULL,
-    Category VARCHAR(255) NOT NULL
+    Category VARCHAR(255) NOT NULL,
+    IMG_path VARCHAR(500)
 );
 
 CREATE TABLE `Table` (
     TableID INT PRIMARY KEY,
     isReserved BOOLEAN NOT NULL,
-    chairs_count INT NOT NULL,
-    IMG_path VARCHAR(500)
+    chairs_count INT NOT NULL
 );
 
 CREATE TABLE Order (
