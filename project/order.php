@@ -5,34 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Menu</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!--google fonts-->
+    <link rel="preconnect" href="https://fonts.googleleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 </head>
 <body>
 
 
     <header id="header">
         <div class="logo">
-            <i class="fas fa-utensils"></i>
-            SHB3NY
+        <a href="index.php" class="logo"><i class='bx bxs-bowl-hot'></i>SHB3NY</a>
         </div>
         <nav class="navlist">
-            <a href="#home" class="active">Home</a>
-            <a href="#menu">Menu</a>
-            <a href="#about">About</a>
+            <a href="#home">Home</a>
+            <a href="#menu" class="active">Menu</a>
+            <a href="#about">About Us</a>
             <a href="#contact">Contact</a>
         </nav>
-        <div class="nav-icons">
-            <p>wlecome</p>
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cart-count">0</span>
-        </div>
+        <div >
+        <a href="logout.php"><p class="btn">Logout</p> </a>        
+</div>
     </header>
 
     <section id="home" class="home">
-        <div class="home-img">
-            <img src="restaurant.png" alt="Restaurant Image">
-        </div>
-        <div class="home-text">
-            <h1>Welcome to <span class="polka-dot"> SHB3NY Restaurant</span></h1>
+
+        <div class="about-text">
+            <h2>SHB3NY<span class="polka-dot"> Meals</span></h2>
+               <p>
+               WE OFFER LOAVES OF SHE WOLF BREAD FOR SALE 
+MONDAY-FRIDAY, BEGINNING AT 5:00PM
+& SATURDAY-SUNDAY BEGINNING AT 12:30PM. 
+AVAILABLE WHILE SUPPLIES LAST
+            </p>
             <a href="#menu" class="btn">View Menu <i class="fas fa-arrow-down"></i></a>
         </div>
     </section>

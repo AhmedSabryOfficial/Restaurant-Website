@@ -91,6 +91,8 @@
         </div>
 
         <div><p>Not registered yet <a href="register.php">Register Here</a></p></div>
+        <div><p>Admin? <a href="admin.php">Click Here</a></p></div>
+
     </div>
     <script>
             function validateForm() {

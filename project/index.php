@@ -17,20 +17,17 @@
 
 <body>
     <header>
-        <a href="#" class="logo"><i class='bx bxs-bowl-hot'></i>SHB3NY</a>
+        <a href="index.php" class="logo"><i class='bx bxs-bowl-hot'></i>SHB3NY</a>
         <ul class="navlist">
             <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#shop">Shop</a></li>
-            <li><a href="#review">Customer</a></li>
-            <li><a href="#about">About us</a></li>
-            <li><a href="#contact">Contact us</a></li>
+            <li><a href="#shop">Menu</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <div class="nav-icons">
-            <a href="#"><i class='bx bx-search'></i></a>
-            <a href="#"><i class='bx bx-cart'></i></a>
-            <div class="bx bx-menu" id="menu-icon"></div>
-        </div>
+        <div >
+        <a href="logout.php"><p class="btn">Logout</p> </a>        
+</div>
     </header>
 
     <!--home-->
@@ -57,7 +54,7 @@
         <div class="container-box">
             <img src="img/location.png">
             <h3>The Pyramids Road</h3>
-            <a href="#">Way To Us</a>
+            <a href="#">Our Location</a>
         </div>
 
         <div class="container-box">
@@ -139,7 +136,7 @@
             </div>
         </div>
         <div class="row-btn">
-            <a href="#" class="btn">All Food<i class='bx bxs-right-arrow'></i></a>
+            <a href="order.php" class="btn">All Food<i class='bx bxs-right-arrow'></i></a>
 
         </div>
     </section>

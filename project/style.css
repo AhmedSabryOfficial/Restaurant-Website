@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -9,24 +9,24 @@
     scroll-padding-top: 3rem;
 }
 
-:root{
+:root {
     --main-color: #2dffe7;
     --text-color: #fff;
     --other-color: #212121;
     --second-color: #9e9e9e;
     --bg-color: #111111;
-    
+
     --big-font: 4.5rem;
     --h2-font: 2.6rem;
     --p-font: 1.1rem;
 }
 
-body{
+body {
     background: var(--bg-color);
     color: var(--text-color);
 }
 
-header{
+header {
     position: fixed;
     width: 100%;
     top: 0;
@@ -40,7 +40,7 @@ header{
     transition: all .50s ease;
 }
 
-.logo{
+.logo {
     display: flex;
     align-items: center;
     color: var(--text-color);
@@ -48,17 +48,17 @@ header{
     font-weight: 700;
 }
 
-.logo i{
-vertical-align: middle;
-margin-right: 8px;
-color: var(--main-color);
+.logo i {
+    vertical-align: middle;
+    margin-right: 8px;
+    color: var(--main-color);
 }
 
-.navlist{
-display: flex;
+.navlist {
+    display: flex;
 }
 
-.navlist a{
+.navlist a {
     color: var(--text-color);
     font-size: var(--p-font);
     font-weight: 600;
@@ -66,15 +66,15 @@ display: flex;
     transition: all .50s ease;
 }
 
-.navlist a:hover{
+.navlist a:hover {
     color: var(--main-color);
 }
 
-.navlist a.active{
+.navlist a.active {
     color: var(--main-color);
 }
 
-.nav-icons{
+.nav-icons {
     display: flex;
     align-items: center;
     padding: 8px 15px;
@@ -83,7 +83,7 @@ display: flex;
     box-shadow: #2dffe7 0px 1px 25px;
 }
 
-.nav-icons i{
+.nav-icons i {
     vertical-align: middle;
     font-size: 25px;
     color: var(--bg-color);
@@ -92,7 +92,7 @@ display: flex;
     transition: all .50s ease;
 }
 
-#menu-icon{
+#menu-icon {
     font-size: 36px;
     color: var(--bg-color);
     z-index: 10001;
@@ -100,16 +100,16 @@ display: flex;
     display: none;
 }
 
-.nav-icons i:hover{
+.nav-icons i:hover {
     transform: scale(1.1);
     color: var(--text-color);
 }
 
-section{
+section {
     padding: 70px 14% 60px;
 }
 
-.home{
+.home {
     position: relative;
     height: 100vh;
     width: 100%;
@@ -119,23 +119,23 @@ section{
     gap: 2rem;
 }
 
-.home-img img{
+.home-img img {
     width: 100%;
     height: auto;
 }
 
-.home-text h1{
+.home-text h1 {
     font-size: var(--big-font);
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: 3rem;
 }
 
-span{
+span {
     color: var(--main-color);
 }
 
-.btn{
+.btn {
     display: inline-block;
     padding: 15px 35px;
     background: transparent;
@@ -143,7 +143,7 @@ span{
     font-size: var(--p-font);
     font-weight: 500;
     letter-spacing: 1px;
-    border: 1px solid var(--main-color); 
+    border: 1px solid var(--main-color);
     transition: all .50s ease;
 }
 
@@ -153,7 +153,7 @@ span{
     box-shadow: #2dffe7 0px 1px 25px;
 }
 
-.btn i{
+.btn i {
     vertical-align: middle;
     margin-left: 9px;
     font-size: 22px;
@@ -166,32 +166,32 @@ span{
     font-weight: 500;
     letter-spacing: 1px;
     color: var(--text-color);
-    position: relative; 
+    position: relative;
     transition: all 0.5s ease;
 }
 
 .btn2::after {
     content: '';
-    position: absolute; 
-    bottom: -3px; 
-    left: 50%; 
-    width: 0; 
-    height: 3px; 
-    background-color: var(--text-color); 
-    transition: all 0.5s ease; 
-    transform: translateX(-50%); 
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: all 0.5s ease;
+    transform: translateX(-50%);
 }
 
 .btn2:hover {
-    color: var(--main-color); 
+    color: var(--main-color);
 }
 
 .btn2:hover::after {
-    background-color: var(--main-color); 
-    width: 100%; 
+    background-color: var(--main-color);
+    width: 100%;
 }
 
-header.sticky{
+header.sticky {
     padding: 12px 14%;
     background: var(--other-color);
 }
@@ -199,7 +199,7 @@ header.sticky{
 .container {
     padding: 30px 14% 70px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, auto)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     gap: 2rem;
     text-align: center;
 }
@@ -207,21 +207,26 @@ header.sticky{
 .container-box {
     padding: 43px;
     background: var(--other-color);
-    border-radius: 3rem; /* For rounded corners */
+    border-radius: 3rem;
+    /* For rounded corners */
     position: relative;
-    transition: all 0.5s ease; /* Smooth transition */
-    transform: scale(1); /* Initial scale (no scaling) */
+    transition: all 0.5s ease;
+    /* Smooth transition */
+    transform: scale(1);
+    /* Initial scale (no scaling) */
 }
 
 /* Hover effect to scale and add border */
 .container-box:hover {
-    transform: scale(1.05); /* Scale up by 5% on hover */
-    border: 3px solid var(--main-color); /* Add a border with main color */
+    transform: scale(1.05);
+    /* Scale up by 5% on hover */
+    border: 3px solid var(--main-color);
+    /* Add a border with main color */
 }
 
 /* Maintain consistent styling for other elements */
 .container-box img {
-    width: 100%; 
+    width: 70%;
     max-width: 500px;
     height: auto;
 }
@@ -236,46 +241,55 @@ header.sticky{
     color: var(--second-color);
     font-size: var(--p-font);
     letter-spacing: 1px;
-    transition: all 0.5s ease; /* Smooth transition for text */
+    transition: all 0.5s ease;
+    /* Smooth transition for text */
 }
 
-.container-box a:hover{
+.container-box a:hover {
     color: var(--main-color);
 }
+
 .polka-dot {
     background-image: radial-gradient(circle, black 20%, var(--main-color) 20%);
-    background-size: 9.5px 9.5px; /* Defines the size of the polka dots */
-    background-position: center; /* Centers the pattern */
-    -webkit-background-clip: text; /* Clips background to text */
-    background-clip:text;
-    -webkit-text-fill-color: transparent; /* Makes text transparent to show the pattern */
-    transition: all 0.5s ease; /* Smooth transition for hover effects */
+    background-size: 9.5px 9.5px;
+    /* Defines the size of the polka dots */
+    background-position: center;
+    /* Centers the pattern */
+    -webkit-background-clip: text;
+    /* Clips background to text */
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Makes text transparent to show the pattern */
+    transition: all 0.5s ease;
+    /* Smooth transition for hover effects */
 }
 
-.about{
+.about {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 4rem;
 }
 
-.about-img img{
-width: 100%;
-height: auto;
+.about-img img {
+    width: 100%;
+    height: auto;
 }
 
-.about-text h2{
+.about-text h2 {
     font-size: var(--h2-font);
     line-height: 1.3;
     margin-bottom: 2rem;
 }
 
-.about-text p{
+
+.about-text p {
     color: var(--second-color);
     font-size: var(--p-font);
     line-height: 30px;
     margin-bottom: 3rem;
 }
+
 .contact-content {
     display: flex;
     align-items: center;
@@ -284,13 +298,14 @@ height: auto;
 }
 
 
-.contact-img{
+.contact-img {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
     gap: 4rem;
     margin-bottom: 5rem;
 }
+
 .contact-img img {
     width: 100%;
     max-width: 200px;
@@ -320,92 +335,108 @@ height: auto;
     Line-height: 30px;
     margin-bottom: 3rem;
 }
-.middle-text{
-    text-align: center;  
-  }
-  .middle-text h4{
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--main-color);
-  }
-  .middle-text h2{
-      font-size: var(--h2-font);
-  }
-  .shop-content{
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(300px,auto));
-      gap: 2rem;
-      align-items: center;
-      margin-top: 4rem;
-  }
-  .row{
-      position: relative;
-      padding: 10px 35px 40px;
-      background: var(--other-color);
-      border-radius: 3rem;
-  }
-  .row img{
-      width: 100%;
-      height: auto;
-      transition: transform .50s ease;
-      cursor: pointer;
-  }
-  .row h3{
-      font-size: 18px;
-      margin-bottom: 5px;
-      font-weight: 700;
-  }
-  .row p{
-      color: var(--second-color);
-      font-size: var(--p-font);
-      line-height: 30px;
-      margin-bottom: 1.1rem;
-  }
-  .in-text{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-  }
-  .in-text .price h6{
-      font-size: 17px;
-      color: var(--main-color);
-      font-weight: 600;
-  }
-  .in-text .s-btnn a{
-      display: inline-block;
-      padding: 9px 23px;
-      background: var(--bg-color);
-      color: var(--main-color);
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      border-radius: 3rem;
-      transition: all .50s ease;
-  }
-  .in-text .s-btnn a:hover{
-      background: var(--main-color);
-      color: var(--bg-color);
-      box-shadow: #2dffe7 0px 1px 25px;
-  }
-  .top-icon{
-      position: absolute;
-      top: 30px;
-      left: 35px;
-  }
-  .top-icon i{
-      font-size: 22px;
-      color: var(--main-color);
-  }
-  .row-btn{
-      text-align: center;
-      margin-top: 6rem;
-  }
-  .row img:hover{
-      transform: scale(1.1);
-  }
-  style
-.social i {
+
+.middle-text {
+    text-align: center;
+}
+
+.middle-text h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--main-color);
+}
+
+.middle-text h2 {
+    font-size: var(--h2-font);
+}
+
+.shop-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+    gap: 2rem;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.row {
+    position: relative;
+    padding: 10px 35px 40px;
+    background: var(--other-color);
+    border-radius: 3rem;
+}
+
+.row img {
+    width: 100%;
+    height: auto;
+    transition: transform .50s ease;
+    cursor: pointer;
+}
+
+.row h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.row p {
+    color: var(--second-color);
+    font-size: var(--p-font);
+    line-height: 30px;
+    margin-bottom: 1.1rem;
+}
+
+.in-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.in-text .price h6 {
+    font-size: 17px;
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.in-text .s-btnn a {
+    display: inline-block;
+    padding: 9px 23px;
+    background: var(--bg-color);
+    color: var(--main-color);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 3rem;
+    transition: all .50s ease;
+}
+
+.in-text .s-btnn a:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: #2dffe7 0px 1px 25px;
+}
+
+.top-icon {
+    position: absolute;
+    top: 30px;
+    left: 35px;
+}
+
+.top-icon i {
+    font-size: 22px;
+    color: var(--main-color);
+}
+
+.row-btn {
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.row img:hover {
+    transform: scale(1.1);
+}
+
+style .social i {
     display: inline-block;
     font-size: 32px;
     color: var(--second-color);
@@ -435,7 +466,7 @@ height: auto;
     display: flex;
     align-items: center;
     color: var(--text-color);
-    font-size:20px;
+    font-size: 20px;
     font-weight: 600;
 }
 

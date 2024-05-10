@@ -1,12 +1,12 @@
 CREATE TABLE Customer (
-    cxID INT PRIMARY KEY,
+    cxID INT AUTO_INCREMENT PRIMARY KEY,
     cx_Name VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Menu (
-    item_ID INT PRIMARY KEY,
+    item_ID INT AUTO INCEREMENT PRIMARY KEY,
     item_Name VARCHAR(255) NOT NULL,
     Description TEXT,
     Price DECIMAL(10,2) NOT NULL,
@@ -15,13 +15,13 @@ CREATE TABLE Menu (
 );
 
 CREATE TABLE `Table` (
-    TableID INT PRIMARY KEY,
+    TableID INT AUTO_INCREMENT PRIMARY KEY,
     isReserved BOOLEAN NOT NULL,
     chairs_count INT NOT NULL
 );
 
 CREATE TABLE Order (
-    order_ID INT PRIMARY KEY,
+    order_ID INT AUTO_INCREMENT PRIMARY KEY,
     cx_ID INT,
     item_ID INT,
     FOREIGN KEY (cx_ID) REFERENCES Customer(cxID),
