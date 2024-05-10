@@ -13,10 +13,11 @@ CREATE TABLE Menu (
     Category VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Table (
+CREATE TABLE `Table` (
     TableID INT PRIMARY KEY,
     isReserved BOOLEAN NOT NULL,
-    chairs_count INT NOT NULL
+    chairs_count INT NOT NULL,
+    IMG_path VARCHAR(500)
 );
 
 CREATE TABLE Order (
