@@ -1,12 +1,7 @@
 <?php
-session_start(); // Start the session
+session_start(); 
 
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    // Redirect to the login page or handle unauthorized access
-    header("Location: login.php");
-    exit(); // Terminate script execution after redirection
-}
+
 
 // Include your database connection
 require_once "database.php";
@@ -57,6 +52,12 @@ if ($result) {
         $insertStmt = mysqli_prepare($conn, $insertQuery);
         mysqli_stmt_bind_param($insertStmt, "iisss", $cxID, $tableID, $date, $chosenStartTime, $chosenEndTime);
         mysqli_stmt_execute($insertStmt);
+
+        // Update the table's isReserved value to 1
+        $updateQuery = "UPDATE `Table` SET isReserved = 1 WHERE TableID = ?";
+        $updateStmt = mysqli_prepare($conn, $updateQuery);
+        mysqli_stmt_bind_param($updateStmt, "i", $tableID);
+        mysqli_stmt_execute($updateStmt);
 
         echo "Table reserved successfully!";
     }
