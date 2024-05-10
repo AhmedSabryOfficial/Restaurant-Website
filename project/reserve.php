@@ -37,7 +37,7 @@ if ($result) {
     $totalTablesRow = mysqli_fetch_assoc($totalTablesResult);
     $totalTables = $totalTablesRow['totalTables'];
 
-    if ($availableTables >= $totalTables) {
+    if ($availableTables = $totalTables) {
         echo "Sorry, all tables are reserved at the specified time.";
     } else {
         // Reserve the first available table

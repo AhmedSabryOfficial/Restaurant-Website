@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+        <script src="javascripto.js"></script>
+
 </head>
 
 <body>
@@ -157,8 +159,50 @@
             </p>
         </div>
     </section>
+    <section class="contact" id="contact">
+      <div class="contact-content">
+        <div class="contact-img">
+          <div class="c-one">
+            <!--destination for img name is f1.png-->
+            <img src="img/f1.png" alt="" />
+          </div>
+          <div class="c-one">
+            <!--destination for img name is f1.png-->
+            <img src="img/f2.png" alt="" />
+          </div>
+        </div>
+
+        <div class="contact-text">
+          <h2>Contact Us</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus,
+            tenetur illo tempora praesentium nihil optio, impedit similique
+            rerum distinctio minus ex repellendus iusto ab aspernatur deleniti
+            at eaque nostrum ut.
+          </p>
+          <div class="social">
+            <a href="#" class="clr"><img src="img/instagram-alt-logo-24.png" alt=""></i></a>
+            <a href="#"><img src="img/facebook-logo-24.png" alt=""></a>
+            <a href="#"><img src="img/google-logo-24.png" alt=""></a>
+            <a href="#"><img src="img/twitter-logo-24.png" alt=""></a>
+          </div>
+        </div>
+
+        <div class="details">
+          <div class="main-d">
+            <a href="#"><img src="img/location-plus-solid-24.png" alt="">Main street 65, ny, ny</a>
+          </div>
+          <div class="main-d">
+            <a href="#"><img src="img/mobile-solid-24.png" alt="">01030901313</a>
+          </div>
+          <div class="main-d">
+            <a href="#"><img src="img/bell-solid-24.png" alt="">Subscribe</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!---link to js--->
-    <script src="javascripto.js"></script>
 </body>
 
 </html>
