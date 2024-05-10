@@ -16,7 +16,7 @@ CREATE TABLE Menu (
 
 CREATE TABLE `Table` (
     TableID INT AUTO_INCREMENT PRIMARY KEY,
-    isReserved BOOLEAN NOT NULL,
+    isReserved BOOLEAN NOT NULL DEFAULT  0,
     chairs_count INT NOT NULL
 );
 
