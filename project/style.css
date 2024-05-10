@@ -282,6 +282,11 @@ header.sticky {
     margin-bottom: 2rem;
 }
 
+section .about-text h2 {
+    margin-bottom: -5rem;
+
+}
+
 
 .about-text p {
     color: var(--second-color);
@@ -475,4 +480,23 @@ style .social i {
     margin-right: 12px;
     font-size: 28px;
     color: var(--main-color);
+}
+
+.container-meals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Adjust the gap between items */
+}
+
+.container-box {
+    flex: 1 0 calc(25% - 20px);
+    /* Adjust the width of each item */
+    max-width: calc(25% - 20px);
+    /* Adjust the maximum width of each item */
+}
+
+.container-box img {
+    width: 100%;
+    height: auto;
 }

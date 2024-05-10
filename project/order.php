@@ -60,28 +60,46 @@ AVAILABLE WHILE SUPPLIES LAST
         </div>
     </section>
 
-    <section id="menu" class="container">
-    <?php
-
-foreach ($results as $row) {
-  ?>
-        <div class="container-box" data-item-id="1">
-            <img src="<?php echo $row["IMG_path"];?>" alt="Spaghetti Bolognese">
-            <h3><?php echo $row["item_Name"];?></h3>
-            <p><?php echo $row["Description"];?></p>
-            <p><?php echo $row["Price"];?>$</p>
-            <button class="order-btn btn">Order Now <i class="fas fa-shopping-cart"></i></button>
-        </div>
+    
+        <!-- Loop through each category and generate headings dynamically -->
         <?php
-}
+        $categories = array("Breakfast", "Lunch", "Dinner", "Dessert", "Drinks");
 
-?>
-    </section>
+        foreach ($categories as $category) {
+          echo "<section>";
+          echo "<div class='about-text'>";
+          echo "<h2>$category</h2>";
+          echo "</div>";
+          echo "</section>";
+
+            echo "<section id='menu' class='container'>";
+           
+
+
+            // Loop through results to display items under each category
+            foreach ($results as $row) {
+                if ($row["Category"] == strtoupper($category)) {
+        ?>
+                    <div class="container-box" data-item-id="1">
+                        <img src="<?php echo $row["IMG_path"]; ?>" alt="Spaghetti Bolognese">
+                        <h3><?php echo $row["item_Name"]; ?></h3>
+                        <p><?php echo $row["Description"]; ?></p>
+                        <p>$<?php echo $row["Price"]; ?></p>
+                    </div>
+                    
+        <?php
+                }
+            }
+
+            echo "</section>";
+        }
+        ?>
+ 
     <section id="reservation" class="reservation">
         <div class="reservation-text">
             <h2>Table Reservation</h2>
             <p>Reserve a table for your dining experience!</p>
-            <button class="reserve-btn btn">Reserve Table</button>
+            <a href="TableReservation.html"  class="reserve-btn btn">Reserve Table</a>
         </div>
     </section>
     
