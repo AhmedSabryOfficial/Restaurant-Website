@@ -1,3 +1,32 @@
+<?php
+session_start(); // Start the session at the beginning
+
+if (isset($_POST["login"])) {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    
+    require_once "database.php"; // Include your database connection
+
+    $sql = "SELECT * FROM customer WHERE Email = '$email'";
+    $result = mysqli_query($conn, $sql);
+    $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+    if ($user) {
+        if (password_verify($password, $user["password"])) {
+            // Store user data in session variables
+            $_SESSION["user_id"] = $user["id"];
+            $_SESSION["user_name"] = $user["name"];
+            header("Location: index.php");
+            exit(); // Use exit instead of die()
+        } else {
+            echo "<div class='alert alert-danger'>Password does not match</div>";
+        }
+    } else {
+        echo "<div class='alert alert-danger'>Email does not match</div>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +111,7 @@
 <body>
     <div class="container">
         <div class="image-container">
-            <form name="loginForm" action="login.php" method="post" onsubmit="return validateForm()" >
+            <form name="loginForm" action="login.php" method="post" onsubmit="return validateForm()">
                 <h1 style="background-color">Login Form</h1>
                 <input type="email" placeholder="Enter Email:" name="email" class="form-control">
                 <input type="password" placeholder="Enter Password:" name="password" class="form-control">
@@ -95,43 +124,20 @@
 
     </div>
     <script>
-            function validateForm() {
-                var email = document.forms["loginForm"]["email"].value;
-                var password = document.forms["loginForm"]["password"].value;
-                
-                if (email == "") {
-                    alert("Email must be filled out");
-                    return false;
-                }
-                if (password == "") {
-                    alert("Password must be filled out");
-                    return false;
-                }
-                return true;
-            } 
-    
-        </script>
-    <?php
-        if (isset($_POST["login"])) {
-           $email = $_POST["email"];
-           $password = $_POST["password"];
-            require_once "database.php";
-            $sql = "SELECT * FROM customer WHERE Email = '$email'";
-            $result = mysqli_query($conn, $sql);
-            $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            if ($user) {
-                if (password_verify($password, $user["password"])) {
-                    session_start();
-                    $_SESSION["user"] = "yes";
-                    header("Location: index.php");
-                    die();
-                } else {
-                    echo "<div class='alert alert-danger'>Password does not match</div>";
-                }
-            } else {
-                echo "<div class='alert alert-danger'>Email does not match</div>";
+        function validateForm() {
+            var email = document.forms["loginForm"]["email"].value;
+            var password = document.forms["loginForm"]["password"].value;
+            
+            if (email == "") {
+                alert("Email must be filled out");
+                return false;
             }
-        }
-        ?>
+            if (password == "") {
+                alert("Password must be filled out");
+                return false;
+            }
+            return true;
+        } 
+    </script>
 </body>
 </html>
