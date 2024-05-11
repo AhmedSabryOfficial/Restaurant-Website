@@ -26,4 +26,10 @@
     <input type="submit" value="Add" name="add" class="btn btn-primary"></body>
     </form>
 
+    <h1>Add a Table</h1>
+    <form action="addTable.php" method="POST">
+        <label for="chairs_count">Chairs Count:</label>
+        <input type="number" id="chairs_count" name="chairs_count" required>
+        <button type="submit">Add Table</button>
+    </form>
 </html>

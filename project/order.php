@@ -36,7 +36,7 @@ session_start();
         <a href="index.php" class="logo"><i class='bx bxs-bowl-hot'></i>SHB3NY</a>
         </div>
         <nav class="navlist">
-            <a href="#home">Home</a>
+            <a href="index.php">Home</a>
             <a href="#menu" class="active">Menu</a>
             <a href="#about">About Us</a>
             <a href="#contact">Contact</a>
@@ -60,53 +60,51 @@ AVAILABLE WHILE SUPPLIES LAST
         </div>
     </section>
 
-    
-        <!-- Loop through each category and generate headings dynamically -->
-        <?php
-        $categories = array("Breakfast", "Lunch", "Dinner", "Dessert", "Drinks");
-
-        foreach ($categories as $category) {
-          echo "<section>";
-          echo "<div class='about-text'>";
-          echo "<h2>$category</h2>";
-          echo "</div>";
-          echo "</section>";
-
-            echo "<section id='menu' class='container'>";
-           
 
 
-            // Loop through results to display items under each category
-            foreach ($results as $row) {
-                if ($row["Category"] == strtoupper($category)) {
-        ?>
-                    <div class="container-box" data-item-id="1">
-                        <img src="<?php echo $row["IMG_path"]; ?>" alt="Spaghetti Bolognese">
-                        <h3><?php echo $row["item_Name"]; ?></h3>
-                        <p><?php echo $row["Description"]; ?></p>
-                        <p>$<?php echo $row["Price"]; ?></p>
-                    </div>
-                    
-        <?php
-                }
-            }
+<?php
+$categories = array("Breakfast", "Lunch", "Dinner", "Dessert", "Drinks");
 
-            echo "</section>";
+foreach ($categories as $category) {
+  echo "<section>";
+  echo "<div class='about-text'>";
+  echo "<h2>$category</h2>";
+  echo "</div>";
+  echo "</section>";
+  echo "<section id='menu' class='container'>";
+   
+    // Loop through results to display items under each category
+    foreach ($results as $row) {
+        if ($row["Category"] == strtoupper($category)) {
+?>
+            <div class="container-box" data-item-id="1">
+                <img src="<?php echo $row["IMG_path"]; ?>" alt="Spaghetti Bolognese">
+                <h3><?php echo $row["item_Name"]; ?></h3>
+                <p><?php echo $row["Description"]; ?></p>
+                <p>$<?php echo $row["Price"]; ?></p>
+            </div>
+            
+<?php
         }
-        ?>
- 
+    }
+
+    echo "</section>";
+}
+?>
+
+    
     <section id="reservation" class="reservation">
         <div class="reservation-text">
             <h2>Table Reservation</h2>
             <p>Reserve a table for your dining experience!</p>
-            <a href="TableReservation.html"  class="reserve-btn btn">Reserve Table</a>
+            <a href="TableReservation.html" class="reserve-btn btn">Reserve Table</a>
         </div>
     </section>
     
 
     <section id="about" class="about">
         <div class="about-img">
-            <img src="chief.png" alt="Chef">
+            <img src="img/chief.png" alt="Chef">
         </div>
         <div class="about-text">
             <h2>About Us</h2>

@@ -11,7 +11,8 @@ CREATE TABLE Menu (
     Description TEXT,
     Price DECIMAL(10,2) NOT NULL,
     Category VARCHAR(255) NOT NULL,
-    IMG_path VARCHAR(500)
+    IMG_path VARCHAR(500),
+    isPopular BOOLEAN NOT NULL DEFAULT  0
 );
 
 CREATE TABLE `Table` (

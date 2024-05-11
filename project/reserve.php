@@ -1,6 +1,13 @@
 <?php
 session_start(); 
 
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to the login page or handle unauthorized access
+    header("Location: login.php");
+    exit(); // Terminate script execution after redirection
+}
+
 // Include your database connection
 require_once "database.php";
 
