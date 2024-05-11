@@ -4,6 +4,7 @@ if (isset($_POST["add"])) {
     $Description = $_POST["Description"];
     $Price = $_POST["Price"];
     $Category = $_POST["Category"];
+    $Popularity = $_POST["Popularity"];
 
     $img = $_FILES["img"]["name"];
     $img_tmp = $_FILES["img"]["tmp_name"];
@@ -13,9 +14,9 @@ if (isset($_POST["add"])) {
     if (move_uploaded_file($img_tmp, $upload_dir . $img)) {
         require_once "database.php";
 
-        $sql = "INSERT INTO menu (item_Name, Description, Price, Category, IMG_path) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO menu (item_Name, Description, Price, Category, IMG_path, isPopular) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss", $item_Name, $Description, $Price,$Category, $targetFile);
+        $stmt->bind_param("ssssss", $item_Name, $Description, $Price,$Category, $targetFile, $Popularity);
 
         if ($stmt->execute()) {
             echo "<div class='alert alert-success'>Dish added successfully.</div>";

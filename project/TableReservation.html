@@ -5,22 +5,65 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Table Reservation</title>
+    <link rel="stylesheet" href="style.css">
+
+
 </head>
 
 <body>
+    <header>
+        <a href="index.php" class="logo"><i class='bx bxs-bowl-hot'></i>SHB3NY</a>
+        <ul class="navlist">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="order.php">Menu</a></li>
+            <li> <a href="TableReservation.htmls" class="active">Reserve</a> </li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div>
+            <a href="logout.php">
+                <p class="btn">Logout</p>
+            </a>
+        </div>
+    </header>
     <form action="reserve.php" method="POST">
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required><br><br>
 
-        <label for="start_time">Start Time:</label>
-        <input type="time" id="start_time" name="start_time" required><br><br>
+        <section id="home" class="home">
+            <div class="home-img">
+                <img src="img/pngimg.com - barbecue_PNG38.png" alt="Restaurant Image">
+            </div>
+            <div class="home-text">
+                <h1>Section Of <span class="polka-dot"> Table Reservation</span></h1>
 
-        <label for="end_time">End Time:</label>
-        <input type="time" id="end_time" name="end_time" required><br><br>
+            </div>
+        </section>
 
-        <label for="chairs">Number of Chairs:</label>
-        <input type="number" id="chairs" name="chairs" required><br><br>
-        <input type="submit" value="Reserve Table">
+        <section id="reservation" class="reservation">
+            <label for="date">
+                <h1>Date:</h1>
+            </label>
+            <input type="date" id="date" name="date" required><br><br>
+
+            <label for="start_time">
+                <h1>Start Time:</h1>
+            </label>
+            <input type="time" id="start_time" name="start_time" required><br><br>
+
+            <label for="end_time">
+                <h1>End Time:</h1>
+            </label>
+            <input type="time" id="end_time" name="end_time" required><br><br>
+
+            <label for="chairs">
+                <h1>Number of Chairs:</h1>
+            </label>
+            <input type="number" id="chairs" name="chairs" required><br><br>
+
+
+
+            <button class="order-btn btn" onclick="submit">Reserve Table <i class="fas fa-shopping-cart"></i></button>
+        </section>
     </form>
 </body>
 
