@@ -33,7 +33,7 @@ if (!isValidDateTime($date, $chosenStartTime, $chosenEndTime)) {
               WHERE Reservation_Date = ?
               AND (
                   (StartTime = ? AND EndTime = ?) 
-                  OR (? > StartTime AND ? < EndTime)
+                  OR (? >= StartTime AND ? < EndTime)
                   OR (? < StartTime AND ? > StartTime)
               )";
     
@@ -64,7 +64,7 @@ if (!isValidDateTime($date, $chosenStartTime, $chosenEndTime)) {
                                 WHERE Reservation_Date = ?
                                 AND (
                                   (StartTime = ? AND EndTime = ?) 
-                                  OR (? > StartTime AND ? < EndTime)
+                                  OR (? >= StartTime AND ? < EndTime)
                                   OR (? < StartTime AND ? > StartTime)
                                 )
                             )
