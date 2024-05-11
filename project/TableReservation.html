@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Table Reservation</title>
-</head>
+    <link rel="stylesheet" href="style.css">
 
+    
+</head>
 <body>
     <form action="reserve.php" method="POST">
-        <label for="date">Date:</label>
+        
+        <section id="home" class="home">
+            <div class="home-img">
+                <img src="restaurant.png" alt="Restaurant Image">
+            </div>
+            <div class="home-text">
+                <h1>Section Of <span class="polka-dot"> Table Reservation</span></h1>
+                
+            </div>
+        </section>
+        
+        <section id="reservation" class="reservation">
+        <label for="date"><h1>Date:</h1></label>
         <input type="date" id="date" name="date" required><br><br>
-
-        <label for="start_time">Start Time:</label>
+    
+        <label for="start_time"><h1>Start Time:</h1></label>
         <input type="time" id="start_time" name="start_time" required><br><br>
 
-        <label for="end_time">End Time:</label>
+        <label for="end_time"><h1>End Time:</h1></label>
         <input type="time" id="end_time" name="end_time" required><br><br>
-
-        <label for="chairs">Number of Chairs:</label>
+      
+        <label for="chairs"><h1>Number of Chairs:</h1></label>
         <input type="number" id="chairs" name="chairs" required><br><br>
-        <input type="submit" value="Reserve Table">
+        
+     
+        
+        <button class="order-btn btn" onclick="submit">Reserve Table <i class="fas fa-shopping-cart"></i></button>
+        </section>
     </form>
 </body>
-
 </html>
