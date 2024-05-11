@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit(); // Terminate script execution after redirection
 }
+$cxID = $_SESSION['user_id'];
 
 // Include your database connection
 require_once "database.php";
@@ -16,9 +17,6 @@ $date = $_POST['date'];
 $chosenStartTime = $_POST['start_time'];
 $chosenEndTime = $_POST['end_time'];
 $chairs = $_POST['chairs'];
-
-// Retrieve user ID from session
-$cxID = $_SESSION['user_id'];
 
 // Validate date and time format
 function isValidDateTime($date, $startTime, $endTime) {
@@ -35,12 +33,12 @@ if (!isValidDateTime($date, $chosenStartTime, $chosenEndTime)) {
               WHERE Reservation_Date = ?
               AND (
                   (StartTime = ? AND EndTime = ?) 
-                  OR (StartTime > ? AND StartTime < ?)
-                  OR (EndTime > ? AND EndTime < ?)
+                  OR (? > StartTime AND ? < EndTime)
+                  OR (? < StartTime AND ? > StartTime)
               )";
     
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sssssss", $date, $chosenStartTime, $chosenEndTime, $chosenStartTime, $chosenEndTime, $chosenStartTime, $chosenEndTime);
+    mysqli_stmt_bind_param($stmt, "sssssss", $date, $chosenStartTime, $chosenEndTime, $chosenStartTime, $chosenStartTime, $chosenStartTime, $chosenEndTime);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
@@ -59,21 +57,21 @@ if (!isValidDateTime($date, $chosenStartTime, $chosenEndTime)) {
         } else {
             // Reserve the first available table
             $reserveQuery = "SELECT TableID
-                             FROM `Table` 
-                             WHERE TableID NOT IN (
-                                 SELECT Table_ID
-                                 FROM Reservation
-                                 WHERE Reservation_Date = ? 
-                                 AND (
-                                     (StartTime = ? AND EndTime = ?) 
-                                     OR (StartTime > ? AND StartTime < ?)
-                                     OR (EndTime > ? AND EndTime < ?)
-                                 )
-                             )
+                            FROM `Table` 
+                            WHERE TableID NOT IN(
+                                SELECT Table_ID
+                                FROM Reservation
+                                WHERE Reservation_Date = ?
+                                AND (
+                                  (StartTime = ? AND EndTime = ?) 
+                                  OR (? > StartTime AND ? < EndTime)
+                                  OR (? < StartTime AND ? > StartTime)
+                                )
+                            )
                              LIMIT 1";
 
             $reserveStmt = mysqli_prepare($conn, $reserveQuery);
-            mysqli_stmt_bind_param($reserveStmt, "sssssss", $date, $chosenStartTime, $chosenEndTime, $chosenStartTime, $chosenEndTime, $chosenStartTime, $chosenEndTime);
+            mysqli_stmt_bind_param($reserveStmt, "sssssss", $date, $chosenStartTime, $chosenEndTime, $chosenStartTime, $chosenStartTime,$chosenStartTime, $chosenEndTime);
             mysqli_stmt_execute($reserveStmt);
             $reserveResult = mysqli_stmt_get_result($reserveStmt);
 
