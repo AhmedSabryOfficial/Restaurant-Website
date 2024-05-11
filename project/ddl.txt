@@ -16,7 +16,6 @@ CREATE TABLE Menu (
 
 CREATE TABLE `Table` (
     TableID INT AUTO_INCREMENT PRIMARY KEY,
-    isReserved BOOLEAN NOT NULL DEFAULT  0,
     chairs_count INT NOT NULL
 );
 
@@ -36,5 +35,5 @@ CREATE TABLE Reservation (
     EndTime TIME NOT NULL,
     PRIMARY KEY (Table_ID, Reservation_Date, StartTime),
     FOREIGN KEY (Cx_ID) REFERENCES Customer(cxID),
-    FOREIGN KEY (Table_ID) REFERENCES `Table`(TableID)  -- Corrected the foreign key constraint name
-);
+    FOREIGN KEY (Table_ID) REFERENCES `Table`(TableID)
+    );

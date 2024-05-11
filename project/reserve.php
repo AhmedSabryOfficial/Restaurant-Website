@@ -18,7 +18,7 @@ $chairs = $_POST['chairs'];
 $cxID = $_SESSION['user_id'];
 
 // Prepare and bind parameters for the first query
-$query = "SELECT COUNT(*) AS availableTables
+$query = "SELECT COUNT(*) AS reservedTablesCount
           FROM Reservation
           WHERE Reservation_Date = ? 
           AND StartTime = ?";
@@ -29,19 +29,28 @@ $result = mysqli_stmt_get_result($stmt);
 
 if ($result) {
     $row = mysqli_fetch_assoc($result);
-    $availableTables = $row['availableTables'];
+    $reservedTablesCount = $row['reservedTablesCount'];
 
     // Get total tables count
     $totalTablesQuery = "SELECT COUNT(*) AS totalTables FROM `Table`";
     $totalTablesResult = mysqli_query($conn, $totalTablesQuery);
     $totalTablesRow = mysqli_fetch_assoc($totalTablesResult);
-    $totalTables = $totalTablesRow['totalTables'];
+    $totalTablesCount = $totalTablesRow['totalTables'];
 
-    if ($availableTables == $totalTables) {
+    if ($reservedTablesCount == $totalTablesCount) {
         echo "Sorry, all tables are reserved at the specified time.";
     } else {
         // Reserve the first available table
-        $reserveQuery = "SELECT TableID FROM `Table` LIMIT 1";
+        $reserveQuery = "SELECT TableID
+                FROM `Table` 
+                WHERE TableID NOT IN (
+                    SELECT Table_ID 
+                    FROM Reservation 
+                    WHERE Reservation_Date = '{$_POST['date']}' 
+                    AND StartTime = '{$_POST['start_time']}'
+                )
+                LIMIT 1";
+
         $reserveResult = mysqli_query($conn, $reserveQuery);
         $reserveRow = mysqli_fetch_assoc($reserveResult);
         $tableID = $reserveRow['TableID'];
@@ -52,12 +61,6 @@ if ($result) {
         $insertStmt = mysqli_prepare($conn, $insertQuery);
         mysqli_stmt_bind_param($insertStmt, "iisss", $cxID, $tableID, $date, $chosenStartTime, $chosenEndTime);
         mysqli_stmt_execute($insertStmt);
-
-        // Update the table's isReserved value to 1
-        $updateQuery = "UPDATE `Table` SET isReserved = 1 WHERE TableID = ?";
-        $updateStmt = mysqli_prepare($conn, $updateQuery);
-        mysqli_stmt_bind_param($updateStmt, "i", $tableID);
-        mysqli_stmt_execute($updateStmt);
 
         echo "Table reserved successfully!";
     }
