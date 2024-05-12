@@ -39,6 +39,7 @@ session_start();
         <ul class="navlist">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="order.php">Menu</a></li>
+            <a href="TableReservation.html">Reserve</a>
             <li><a href="#about">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>

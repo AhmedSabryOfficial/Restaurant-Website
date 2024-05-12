@@ -38,35 +38,24 @@ if (isset($_POST["login"])) {
    
 </head>
 <body>
-    <div class="container">
-        <div class="image-container">
-            <form name="loginForm" action="login.php" method="post" onsubmit="return validateForm()">
+<body>
+    <div class="c">
+        <div class="i-c">
+            <form name="loginForm" action="login.php" method="post" onsubmit="return validateForm()" >
                 <h1 style="background-color">Login Form</h1>
-                <input type="email" placeholder="Enter Email:" name="email" class="form-control">
-                <input type="password" placeholder="Enter Password:" name="password" class="form-control">
-                <input type="submit" value="Login" name="login" class="btn btn-primary">
-            </form>
-        </div>
-
+                <input type="email" placeholder="Enter Email:" name="email" class="i">
+                <input type="password" placeholder="Enter Password:" name="password" class="i">
+                <input type="submit" value="Login" name="login" class="b">
+                </div>
         <div><p>Not registered yet <a href="register.php">Register Here</a></p></div>
         <div><p>Admin? <a href="admin.php">Click Here</a></p></div>
 
     </div>
-    <script>
-        function validateForm() {
-            var email = document.forms["loginForm"]["email"].value;
-            var password = document.forms["loginForm"]["password"].value;
-            
-            if (email == "") {
-                alert("Email must be filled out");
-                return false;
-            }
-            if (password == "") {
-                alert("Password must be filled out");
-                return false;
-            }
-            return true;
-        } 
-    </script>
+            </form>
+        </div>
+
+       
+    
+   
 </body>
 </html>
