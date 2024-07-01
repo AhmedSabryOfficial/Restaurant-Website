@@ -11,7 +11,8 @@ CREATE TABLE Menu (
     Description TEXT,
     Price DECIMAL(10,2) NOT NULL,
     Category VARCHAR(255) NOT NULL,
-    IMG_path VARCHAR(500)
+    IMG_path VARCHAR(500),
+    isPopular BOOLEAN NOT NULL DEFAULT  0
 );
 
 CREATE TABLE `Table` (
@@ -34,7 +35,7 @@ CREATE TABLE Reservation (
     Reservation_Date DATE NOT NULL,
     StartTime TIME NOT NULL,
     EndTime TIME NOT NULL,
-    PRIMARY KEY (Cx_ID, Table_ID, Reservation_Date),
+    PRIMARY KEY (Table_ID, Reservation_Date, StartTime),
     FOREIGN KEY (Cx_ID) REFERENCES Customer(cxID),
     FOREIGN KEY (Table_ID) REFERENCES `Table`(TableID)  -- Corrected the foreign key constraint name
 );
