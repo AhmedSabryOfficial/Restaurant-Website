@@ -36,8 +36,9 @@ session_start();
         <a href="index.php" class="logo"><i class='bx bxs-bowl-hot'></i>SHB3NY</a>
         </div>
         <nav class="navlist">
-            <a href="#home">Home</a>
+            <a href="index.php">Home</a>
             <a href="#menu" class="active">Menu</a>
+            <a href="TableReservation.html">Reserve</a>
             <a href="#about">About Us</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -59,7 +60,6 @@ AVAILABLE WHILE SUPPLIES LAST
             <a href="#menu" class="btn">View Menu <i class="fas fa-arrow-down"></i></a>
         </div>
     </section>
-
  
         <!-- Loop through each category and generate headings dynamically -->
         <?php
@@ -93,6 +93,7 @@ AVAILABLE WHILE SUPPLIES LAST
             echo "</section>";
         }
         ?>
+
     <section id="reservation" class="reservation">
         <div class="reservation-text">
             <h2>Table Reservation</h2>

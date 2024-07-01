@@ -1,3 +1,19 @@
+
+<?php
+require_once 'database.php';
+session_start();
+
+
+  $sql = "SELECT * FROM menu";
+  $all_product = $conn->query($sql);
+
+  // Fetch all rows into an array for later use
+  $results = mysqli_fetch_all($all_product, MYSQLI_ASSOC);;
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +38,8 @@
         <a href="index.php" class="logo"><i class='bx bxs-bowl-hot'></i>SHB3NY</a>
         <ul class="navlist">
             <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#shop">Menu</a></li>
+            <li><a href="order.php">Menu</a></li>
+            <a href="TableReservation.html">Reserve</a>
             <li><a href="#about">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -71,12 +88,16 @@
             <h4>Our Menu</h4>
             <h2>LET'S CHECK OUR POPULAR DISHES</h2>
         </div>
-       
+     
         <div class="row-btn">
             <a href="order.php" class="btn">All Food<i class='bx bxs-right-arrow'></i></a>
         </div>
     </section>
-
+        <div class="row-btn">
+            <a href="order.php" class="btn">All Food<i class='bx bxs-right-arrow'></i></a>
+            </div>
+            </section>
+     
     <!--about us-->
     <section class="about" id="about">
         <div class="about-img">
@@ -137,6 +158,7 @@
     </section>
 
     <!---link to js--->
+
 </body>
 <section class="shop" id="shop">
     <div class="middle-text">

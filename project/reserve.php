@@ -1,7 +1,13 @@
 <?php
 session_start(); 
 
-
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to the login page or handle unauthorized access
+    header("Location: login.php");
+    exit(); // Terminate script execution after redirection
+}
+$cxID = $_SESSION['user_id'];
 
 // Include your database connection
 require_once "database.php";
@@ -12,6 +18,10 @@ $chosenStartTime = $_POST['start_time'];
 $chosenEndTime = $_POST['end_time'];
 $chairs = $_POST['chairs'];
 
+// Validate date and time format
+function isValidDateTime($date, $startTime, $endTime) {
+    return (bool)strtotime($date) && (bool)strtotime($startTime) && (bool)strtotime($endTime);
+}
 
 
 // Retrieve user ID from session
@@ -60,15 +70,9 @@ if ($result) {
         mysqli_stmt_execute($updateStmt);
 
         echo "Table reserved successfully!";
+
     }
-} else {
-    echo "Error in checking table availability.";
 }
 
 mysqli_close($conn);
-
-// Function to validate date and time format
-function isValidDateTime($date, $startTime, $endTime) {
-    return (bool)strtotime($date) && (bool)strtotime($startTime) && (bool)strtotime($endTime);
-}
 ?>
