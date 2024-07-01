@@ -88,32 +88,11 @@ session_start();
             <h4>Our Menu</h4>
             <h2>LET'S CHECK OUR POPULAR DISHES</h2>
         </div>
-<div class = "shop-content">
-
-
-
-        <?php
-
-    // Loop through results to display items under each category
-    foreach ($results as $row) {
-        if($row["isPopular"]=="1"){
-?>
-
-            <div class="row" data-item-id="1">
-                <img src="<?php echo $row["IMG_path"]; ?>" alt="Spaghetti Bolognese">
-                <h3><?php echo $row["item_Name"]; ?></h3>
-                <p><?php echo $row["Description"]; ?></p>
-                <p>$<?php echo $row["Price"]; ?></p>
-            </div>
-            
-<?php
-    }
-    }
-?>
-
-</div>
-
-
+     
+        <div class="row-btn">
+            <a href="order.php" class="btn">All Food<i class='bx bxs-right-arrow'></i></a>
+        </div>
+    </section>
         <div class="row-btn">
             <a href="order.php" class="btn">All Food<i class='bx bxs-right-arrow'></i></a>
             </div>
@@ -177,6 +156,84 @@ session_start();
         </div>
       </div>
     </section>
-</body>
 
+    <!---link to js--->
+
+</body>
+<section class="shop" id="shop">
+    <div class="middle-text">
+      <h4>Our Shop</h4>
+      <h2>Lets Check Popular foods</h2>
+    </div>
+    <div class="shop-content">
+      <div class="row">
+        <img src="C:\Users\LapStore\Desktop\Web assignment final\img\freepik-export-20240509163350mHKe (1).png">
+        <h3>Blueberry Honey</h3>
+         <p>It is a long established fact that a reader</p>
+         <div class="in-text">
+          <div class="price">
+            <h6>$21.00</h6>
+</div>
+<div class="s-btnn">
+    <a href="#">Order now</a>
+    </div>
+    </div>
+    <div class="top-icon">
+    <a href="#"><i class='bx bx-heart' ></i></a>
+    </div>
+</div>
+<div class="row">
+    <img src="C:\Users\LapStore\Desktop\Web assignment final\img\2149281337.jpg">
+    <h3>Blueberry Honey</h3>
+     <p>It is a long established fact that a reader</p>
+     <div class="in-text">
+      <div class="price">
+        <h6>$21.00</h6>
+</div>
+<div class="s-btnn">
+<a href="#">Order now</a>
+</div>
+</div>
+<div class="top-icon">
+<a href="#"><i class='bx bx-heart' ></i></a>
+</div>
+</div>
+<div class="row">
+    <img src="C:\Users\LapStore\Desktop\Web assignment final\img\freepik-export-20240509163600w25b (1).png">
+    <h3>White souce pasta</h3>
+     <p>It is a long established fact that a reader</p>
+     <div class="in-text">
+      <div class="price">
+        <h6>$21.00</h6>
+</div>
+<div class="s-btnn">
+<a href="#">Order now</a>
+</div>
+</div>
+<div class="top-icon">
+<a href="#"><i class='bx bx-heart' ></i></a>
+</div>
+</div>
+<div class="row">
+    <img src="C:\Users\LapStore\Desktop\Web assignment final\img\freepik-export-2024050915244667Ef.png">
+    <h3>Blueberry Honey</h3>
+     <p>It is a long established fact that a reader</p>
+     <div class="in-text">
+      <div class="price">
+        <h6>$21.00</h6>
+</div>
+<div class="s-btnn">
+<a href="#">Order now</a>
+</div>
+</div>
+<div class="top-icon">
+<a href="#"><i class='bx bx-heart' ></i></a>
+</div>
+</div>
+</div>
+<div class="row-btn">
+    <a href="#" class="btn">All Food<i class='bx bxs-right-arrow'></i></a>
+
+</div>
+</section>
 </html>

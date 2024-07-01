@@ -23,76 +23,54 @@ function isValidDateTime($date, $startTime, $endTime) {
     return (bool)strtotime($date) && (bool)strtotime($startTime) && (bool)strtotime($endTime);
 }
 
-// Check if date and time are valid
-if (!isValidDateTime($date, $chosenStartTime, $chosenEndTime)) {
-    echo "Invalid date or time format.";
-} else {
-    // Query to get count of reserved tables at specific time
-    $query = "SELECT COUNT(*) AS reservedTablesCount
-              FROM Reservation
-              WHERE Reservation_Date = ?
-              AND (
-                  (StartTime = ? AND EndTime = ?) 
-                  OR (? >= StartTime AND ? < EndTime)
-                  OR (? < StartTime AND ? > StartTime)
-              )";
-    
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sssssss", $date, $chosenStartTime, $chosenEndTime, $chosenStartTime, $chosenStartTime, $chosenStartTime, $chosenEndTime);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
 
-    if ($result) {
-        $row = mysqli_fetch_assoc($result);
-        $reservedTablesCount = $row['reservedTablesCount'];
+// Retrieve user ID from session
+$cxID = $_SESSION['user_id'];
 
-        // Get total tables count
-        $totalTablesQuery = "SELECT COUNT(*) AS totalTables FROM `Table`";
-        $totalTablesResult = mysqli_query($conn, $totalTablesQuery);
-        $totalTablesRow = mysqli_fetch_assoc($totalTablesResult);
-        $totalTablesCount = $totalTablesRow['totalTables'];
+// Prepare and bind parameters for the first query
+$query = "SELECT COUNT(*) AS availableTables
+          FROM Reservation
+          WHERE Reservation_Date = ? 
+          AND StartTime = ?";
+$stmt = mysqli_prepare($conn, $query);
+mysqli_stmt_bind_param($stmt, "ss", $date, $chosenStartTime);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-        if ($reservedTablesCount == $totalTablesCount) {
-            echo "Sorry, all tables are reserved at the specified time.";
-        } else {
-            // Reserve the first available table
-            $reserveQuery = "SELECT TableID
-                            FROM `Table` 
-                            WHERE TableID NOT IN(
-                                SELECT Table_ID
-                                FROM Reservation
-                                WHERE Reservation_Date = ?
-                                AND (
-                                  (StartTime = ? AND EndTime = ?) 
-                                  OR (? >= StartTime AND ? < EndTime)
-                                  OR (? < StartTime AND ? > StartTime)
-                                )
-                            )
-                             LIMIT 1";
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $availableTables = $row['availableTables'];
 
-            $reserveStmt = mysqli_prepare($conn, $reserveQuery);
-            mysqli_stmt_bind_param($reserveStmt, "sssssss", $date, $chosenStartTime, $chosenEndTime, $chosenStartTime, $chosenStartTime,$chosenStartTime, $chosenEndTime);
-            mysqli_stmt_execute($reserveStmt);
-            $reserveResult = mysqli_stmt_get_result($reserveStmt);
+    // Get total tables count
+    $totalTablesQuery = "SELECT COUNT(*) AS totalTables FROM `Table`";
+    $totalTablesResult = mysqli_query($conn, $totalTablesQuery);
+    $totalTablesRow = mysqli_fetch_assoc($totalTablesResult);
+    $totalTables = $totalTablesRow['totalTables'];
 
-            if ($reserveResult) {
-                $reserveRow = mysqli_fetch_assoc($reserveResult);
-                $tableID = $reserveRow['TableID'];
-
-                // Insert the new reservation using prepared statement
-                $insertQuery = "INSERT INTO Reservation (Cx_ID, Table_ID, Reservation_Date, StartTime, EndTime) 
-                                VALUES (?, ?, ?, ?, ?)";
-                $insertStmt = mysqli_prepare($conn, $insertQuery);
-                mysqli_stmt_bind_param($insertStmt, "iisss", $cxID, $tableID, $date, $chosenStartTime, $chosenEndTime);
-                mysqli_stmt_execute($insertStmt);
-
-                echo "Table reserved successfully!";
-            } else {
-                echo "Error in reserving the table.";
-            }
-        }
+    if ($availableTables = $totalTables) {
+        echo "Sorry, all tables are reserved at the specified time.";
     } else {
-        echo "Error in checking table availability.";
+        // Reserve the first available table
+        $reserveQuery = "SELECT TableID FROM `Table` WHERE isReserved = 0 LIMIT 1";
+        $reserveResult = mysqli_query($conn, $reserveQuery);
+        $reserveRow = mysqli_fetch_assoc($reserveResult);
+        $tableID = $reserveRow['TableID'];
+
+        // Insert the new reservation using prepared statement
+        $insertQuery = "INSERT INTO Reservation (Cx_ID, Table_ID, Reservation_Date, StartTime, EndTime) 
+                        VALUES (?, ?, ?, ?, ?)";
+        $insertStmt = mysqli_prepare($conn, $insertQuery);
+        mysqli_stmt_bind_param($insertStmt, "iisss", $cxID, $tableID, $date, $chosenStartTime, $chosenEndTime);
+        mysqli_stmt_execute($insertStmt);
+
+        // Update the table's isReserved value to 1
+        $updateQuery = "UPDATE `Table` SET isReserved = 1 WHERE TableID = ?";
+        $updateStmt = mysqli_prepare($conn, $updateQuery);
+        mysqli_stmt_bind_param($updateStmt, "i", $tableID);
+        mysqli_stmt_execute($updateStmt);
+
+        echo "Table reserved successfully!";
+
     }
 }
 

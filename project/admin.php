@@ -24,7 +24,7 @@ mysqli_close($conn);
     <title>Control</title>
 </head>
 <body>
-    <p>Add a Dish</p>
+    <h1>Add a Dish</h1>
     <form action="addDish.php"  method="POST" enctype="multipart/form-data">
     <input type="text" placeholder="Item Name" name="item_Name" class="form-control">
     <input type="text" placeholder="Description" name="Description" class="form-control">
@@ -45,7 +45,6 @@ mysqli_close($conn);
   <option value="DRINKS">DRINKS</option>
   <option value="DESSERT">DESSERT</option>
 </select>
-
     <input type="file" name="img">
     <input type="submit" value="Add" name="add" class="btn btn-primary"></body>
     </form>
@@ -56,13 +55,4 @@ mysqli_close($conn);
         <input type="number" id="chairs_count" name="chairs_count" required>
         <button type="submit">Add Table</button>
     </form>
-    <form action="RemoveTable.php" method="POST">
-        <label for="TableID">Choose Table ID</label>
-        <select name="TableID" id="TableID">
-            <?php echo $options; ?>
-        </select>
-        <input type="submit" name="submit-btn" value="Remove Table">
-    </form>
-
-
 </html>
